@@ -1,6 +1,6 @@
 """
-Laboratorio de Comunicación Basada en Evidencia
-Evaluación 1 — Arquitecto de Decisiones
+Laboratorio de Comunicacion Basada en Evidencia
+Evaluacion 1 - Arquitecto de Decisiones
 Autor: Fredy
 """
 
@@ -14,8 +14,8 @@ NARANJA = '#D2691E'
 GRIS = '#B8B8B8'
 GRIS_OSCURO = '#555555'
 
-st.set_page_config(page_title="Evaluación 1 - Visualización",
-                   page_icon="📊", layout="wide")
+st.set_page_config(page_title="Evaluacion 1 - Visualizacion",
+                   page_icon="", layout="wide")
 
 # ========== CARGA ==========
 @st.cache_data
@@ -31,47 +31,47 @@ df = cargar()
 ultimo = df['year'].max()
 
 # ========== SIDEBAR ==========
-st.sidebar.title("📊 Evaluación 1")
-st.sidebar.markdown("**Visualización de Datos** · MCD 2026")
+st.sidebar.title("Evaluacion 1")
+st.sidebar.markdown("**Visualizacion de Datos** - MCD 2026")
 st.sidebar.markdown("---")
 
 reto = st.sidebar.radio(
-    "Navegación",
-    ["Portada","Reto #1", "Reto #2",
-     "Reto #3", "Conclusiones"]
+    "Navegacion",
+    ["Portada","Reto 1: Jerarquia", "Reto 2: Contraste",
+     "Reto 3: Persuasion", "Conclusiones"]
 )
 
 st.sidebar.markdown("---")
-st.sidebar.caption(f"Dataset: Our World in Data\nÚltimo año: {ultimo}")
+st.sidebar.caption(f"Dataset: Our World in Data\nUltimo ano: {ultimo}")
 
 # ========== PORTADA ==========
-if reto == "🏠 Portada":
+if reto == "Portada":
     st.title("Laboratorio de Comunicacion Basada en Evidencia")
-    st.subheader("Evaluación 1 — Arquitecto de Decisiones")
+    st.subheader("Evaluacion 1 - Arquitecto de Decisiones")
 
     st.markdown("""
     ### Pregunta de negocio
-    > **¿Cómo se posiciona Colombia en la transición energética global
-    > y qué debe hacer en los próximos 5 años?**
+    > **Como se posiciona Colombia en la transicion energetica global
+    > y que debe hacer en los proximos 5 anos?
 
-    ### Narrativa única
+    ### Narrativa unica
     Los tres retos comparten dataset (OWID Energy) y construyen una historia:
     """)
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.info("**Reto 1 — Jerarquía**\n\n¿Dónde está Colombia en el ranking mundial?")
+        st.info("**Reto 1 - Jerarquia**\n\nDonde esta Colombia en el ranking mundial?")
     with col2:
-        st.warning("**Reto 2 — Contraste**\n\n¿Qué cambió en su trayectoria reciente?")
+        st.warning("**Reto 2 - Contraste**\n\nQue cambio en su trayectoria reciente?")
     with col3:
-        st.success("**Reto 3 — Persuasión**\n\n¿Qué debe hacer Colombia?")
+        st.success("**Reto 3 - Persuasion**\n\nQue debe hacer Colombia?")
 
     st.markdown("---")
-    st.caption(f"Dataset cargado: {df.shape[0]:,} filas · {df['country'].nunique()} países · {df['year'].min()}-{ultimo}")
+    st.caption(f"Dataset cargado: {df.shape[0]:,} filas - {df['country'].nunique()} paises - {df['year'].min()}-{ultimo}")
 
 # ========== RETO 1 ==========
-elif reto == "📏 Reto 1: Jerarquía":
-    st.title("📏 Reto 1: Jerarquía")
+elif reto == "Reto 1: Jerarquia":
+    st.title("Reto 1: Jerarquia")
     st.caption("Eje: Eficiencia (atributos pre-atentivos)")
 
     # Top 8 + Colombia
@@ -108,7 +108,7 @@ elif reto == "📏 Reto 1: Jerarquía":
 
     ax.set_title(f'Colombia ocupa el puesto #{pos_col} mundial en electricidad renovable',
                  loc='left', fontsize=16, fontweight='bold', pad=25, color='#222')
-    fig.text(0.125, 0.92, f'Top 8 países del mundo · Año {ultimo}',
+    fig.text(0.125, 0.92, f'Top 8 paises del mundo - Ano {ultimo}',
              fontsize=11, color='#888', style='italic')
     fig.text(0.125, 0.02, f'Fuente: Our World in Data ({ultimo})',
              fontsize=9, color='#999')
@@ -116,24 +116,24 @@ elif reto == "📏 Reto 1: Jerarquía":
     st.pyplot(fig)
 
     st.markdown("---")
-    st.subheader("Justificación crítica")
+    st.subheader("Justificacion critica")
     st.markdown(f"""
-    **Tipo de síntesis aplicada:** Comparación (¿quién tiene más, quién tiene menos?). Por eso bar chart horizontal y no scatter ni pie.
+    **Tipo de sintesis aplicada:** Comparacion (quien tiene mas, quien tiene menos?). Por eso bar chart horizontal y no scatter ni pie.
 
     **Acto de habla:** Informar (declarativo).
 
-    **Atributo pre-atentivo dominante:** color (hue). El cerebro detecta la barra verde antes de leer texto — esto explota la **memoria sensorial icónica** (< 1 segundo) y evita saturar la atención consciente.
+    **Atributo pre-atentivo dominante:** color (hue). El cerebro detecta la barra verde antes de leer texto - esto explota la **memoria sensorial iconica** (< 1 segundo) y evita saturar la atencion consciente.
 
-    **Por qué solo 8 países + Colombia:** la **memoria de trabajo** procesa entre 4 y 7 elementos. Mostrar 15 países saturaría al lector. La posición exacta (#{pos_col}) se comunica en el título-mensaje, no en el gráfico.
+    **Por que solo 8 paises + Colombia:** la **memoria de trabajo** procesa entre 4 y 7 elementos. Mostrar 15 paises saturaria al lector. La posicion exacta (#{pos_col}) se comunica en el titulo-mensaje, no en el grafico.
 
-    **Ley Gestalt aplicada:** similitud — las barras grises se perciben como un único grupo "contexto"; la barra verde rompe esa similitud y se vuelve **figura sobre fondo**.
+    **Ley Gestalt aplicada:** similitud - las barras grises se perciben como un unico grupo "contexto"; la barra verde rompe esa similitud y se vuelve **figura sobre fondo**.
 
-    **Test del HiPPO:** un directivo entiende en 3 segundos *"estoy en el top extendido pero lejos de los líderes"* sin leyendas.
+    **Test del HiPPO:** un directivo entiende en 3 segundos *"estoy en el top extendido pero lejos de los lideres"* sin leyendas.
     """)
 
 # ========== RETO 2 ==========
-elif reto == "⚖️ Reto 2: Contraste":
-    st.title("⚖️ Reto 2: Contraste")
+elif reto == "Reto 2: Contraste":
+    st.title("Reto 2: Contraste")
     st.caption("Eje: Sintaxis (Gestalt figura/fondo)")
 
     peers = ['Colombia', 'Brazil', 'Chile', 'Argentina', 'Mexico']
@@ -146,10 +146,10 @@ elif reto == "⚖️ Reto 2: Contraste":
     for pais, c in zip(peers, colores_ruido):
         d = sub[sub['country'] == pais]
         ax1.plot(d['year'], d['renewables_share_elec'], color=c, label=pais, linewidth=2)
-    ax1.set_title('ANTES: ¿qué país debo mirar?', fontsize=12, fontweight='bold', color='#B22222')
+    ax1.set_title('ANTES: que pais debo mirar?', fontsize=12, fontweight='bold', color='#B22222')
     ax1.legend(loc='lower right')
     ax1.grid(True, alpha=0.3)
-    ax1.set_xlabel('Año')
+    ax1.set_xlabel('Ano')
     ax1.set_ylabel('% Electricidad renovable')
 
     # DESPUÉS: figura/fondo
@@ -179,10 +179,10 @@ elif reto == "⚖️ Reto 2: Contraste":
                  fontsize=11, color=VERDE, fontweight='bold',
                  arrowprops=dict(arrowstyle='->', color=VERDE, lw=1.5))
 
-    ax2.set_title('DESPUÉS: Colombia se quedó atrás', fontsize=12, fontweight='bold', color=VERDE)
+    ax2.set_title('DESPUES: Colombia se quedo atras', fontsize=12, fontweight='bold', color=VERDE)
     for s in ['top', 'right']:
         ax2.spines[s].set_visible(False)
-    ax2.set_xlabel('Año')
+    ax2.set_xlabel('Ano')
     ax2.set_ylabel('% Electricidad renovable')
     ax2.set_xlim(1995, ultimo + 3)
 
@@ -192,23 +192,23 @@ elif reto == "⚖️ Reto 2: Contraste":
     st.pyplot(fig)
 
     st.markdown("---")
-    st.subheader("Justificación crítica")
+    st.subheader("Justificacion critica")
     st.markdown(f"""
-    **Tipo de síntesis aplicada:** Correlación temporal (relación entre variable y tiempo). Por eso líneas y no barras agrupadas.
+    **Tipo de sintesis aplicada:** Correlacion temporal (relacion entre variable y tiempo). Por eso lineas y no barras agrupadas.
 
     **Acto de habla:** Convencer (directivo).
 
-    **Por qué el "ANTES" falla:** cinco colores saturados compiten por la atención. El cerebro intenta procesar las cinco series simultáneamente y excede el límite de 4-7 elementos de la **memoria de trabajo**.
+    **Por que el "ANTES" falla:** cinco colores saturados compiten por la atencion. El cerebro intenta procesar las cinco series simultaneamente y excede el limite de 4-7 elementos de la **memoria de trabajo**.
 
-    **Por qué el "DESPUÉS" funciona:**
-    - **Figura/fondo (Gestalt):** Colombia (verde, grueso) actúa como figura; los peers (gris claro, fino) son fondo.
-    - **Anotación directa:** el insight cuantificado ({delta:+.1f} pp) está en el gráfico.
-    - **Sin leyenda:** las etiquetas de país están al final de cada línea (ley de proximidad).
+    **Por que el "DESPUES" funciona:**
+    - **Figura/fondo (Gestalt):** Colombia (verde, grueso) actua como figura; los peers (gris claro, fino) son fondo.
+    - **Anotacion directa:** el insight cuantificado ({delta:+.1f} pp) esta en el grafico.
+    - **Sin leyenda:** las etiquetas de pais estan al final de cada linea (ley de proximidad).
     """)
 
 # ========== RETO 3 ==========
-elif reto == "🎭 Reto 3: Persuasión":
-    st.title("🎭 Reto 3: Persuasión")
+elif reto == "Reto 3: Persuasion":
+    st.title("Reto 3: Persuasion")
     st.caption("Eje: Acto de habla (storytelling ejecutivo)")
 
     sub = df[df['country'].isin(['Colombia', 'Chile']) & (df['year'] >= 2000)].copy()
@@ -217,8 +217,8 @@ elif reto == "🎭 Reto 3: Persuasión":
     chile_ult = sub[(sub['country'] == 'Chile') & (sub['year'] == ultimo)]['renewables_share_elec'].values[0]
     tasa_chile = (chile_ult - chile_2018) / (ultimo - 2018)
 
-    años_proy = list(range(ultimo, ultimo + 8))
-    proy = [chile_ult + tasa_chile * (y - ultimo) for y in años_proy]
+    anos_proy = list(range(ultimo, ultimo + 8))
+    proy = [chile_ult + tasa_chile * (y - ultimo) for y in anos_proy]
 
     fig, ax = plt.subplots(figsize=(13, 7.5))
 
@@ -232,7 +232,7 @@ elif reto == "🎭 Reto 3: Persuasión":
     ax.axhline(col_ult, color=VERDE, linestyle=':', alpha=0.4, zorder=1)
 
     ax.text(ultimo + 0.5, col_ult, ' Colombia', va='center', fontsize=12, color=VERDE, fontweight='bold')
-    ax.text(años_proy[-1] + 0.3, proy[-1], ' Chile (proyección)', va='center',
+    ax.text(anos_proy[-1] + 0.3, proy[-1], ' Chile (proyeccion)', va='center',
             fontsize=11, color=NARANJA, fontweight='bold')
 
     def bloque(x, y, titulo, texto, color):
@@ -240,17 +240,17 @@ elif reto == "🎭 Reto 3: Persuasión":
         ax.text(x, y, texto, fontsize=9.5, color='#333', va='top')
 
     txt_contexto = ('Colombia ha liderado renovables en LatAm\n'
-                    'durante 20 años gracias a su matriz hídrica.')
-    txt_hallazgo = (f'Mientras Chile creció {chile_ult-chile_2018:+.0f} pp en 5 años,\n'
-                    f'Colombia se estancó (~76%).')
-    txt_recomend = ('Adjudicar subastas eólicas y solares\n'
+                    'durante 20 anos gracias a su matriz hidrica.')
+    txt_hallazgo = (f'Mientras Chile crecio {chile_ult-chile_2018:+.0f} pp en 5 anos,\n'
+                    f'Colombia se estanco (~76%).')
+    txt_recomend = ('Adjudicar subastas eolicas y solares\n'
                     '2026-2028 antes de perder liderazgo.')
 
     bloque(2000.5, 32, '1. CONTEXTO', txt_contexto, '#555')
     bloque(2010.5, 32, '2. HALLAZGO', txt_hallazgo, NARANJA)
-    bloque(2020.5, 32, '3. RECOMENDACIÓN', txt_recomend, VERDE)
+    bloque(2020.5, 32, '3. RECOMENDACION', txt_recomend, VERDE)
 
-    ax.set_title('Colombia perderá su liderazgo regional en renovables hacia 2028 si no acelera la transición',
+    ax.set_title('Colombia perdera su liderazgo regional en renovables hacia 2028 si no acelera la transicion',
                  loc='left', fontsize=14, fontweight='bold', pad=15)
 
     for s in ['top', 'right']:
@@ -260,55 +260,55 @@ elif reto == "🎭 Reto 3: Persuasión":
     ax.tick_params(colors='#666')
     ax.set_ylabel('% Electricidad renovable', color='#666')
     ax.set_ylim(20, 95)
-    ax.set_xlim(2000, años_proy[-1] + 4)
+    ax.set_xlim(2000, anos_proy[-1] + 4)
 
     ax.text(2000, 16,
-            f'Fuente: Our World in Data (2000-{ultimo}). Proyección: extrapolación lineal de la tasa 2018-{ultimo}.',
+            f'Fuente: Our World in Data (2000-{ultimo}). Proyeccion: extrapolacion lineal de la tasa 2018-{ultimo}.',
             fontsize=8, color='#888', style='italic')
 
     plt.tight_layout()
     st.pyplot(fig)
 
     st.markdown("---")
-    st.subheader("Justificación crítica")
+    st.subheader("Justificacion critica")
     st.markdown("""
-    **Tipo de síntesis aplicada:** Correlación temporal + proyección. Línea continua para histórico, punteada para proyección — Gestalt: similitud diferenciada por estilo.
+    **Tipo de sintesis aplicada:** Correlacion temporal + proyeccion. Linea continua para historico, punteada para proyeccion - Gestalt: similitud diferenciada por estilo.
 
-    **Acto de habla:** Motivar (compromisorio). El título no describe ("Evolución de renovables") sino que **predice y exige acción**.
+    **Acto de habla:** Motivar (compromisorio). El titulo no describe ("Evolucion de renovables") sino que **predice y exige accion**.
 
     **Storytelling tripartito:**
     1. **Contexto** (gris): establece el punto de partida.
     2. **Hallazgo** (naranja = alerta): cuantifica el riesgo.
-    3. **Recomendación** (verde = acción): concreta el "qué hacer".
+    3. **Recomendacion** (verde = accion): concreta el "que hacer".
 
-    **Test de 5 segundos:** el lector debe poder decir *"Vamos bien, pero nos están alcanzando, hay que mover las subastas ya"*.
+    **Test de 5 segundos:** el lector debe poder decir *"Vamos bien, pero nos estan alcanzando, hay que mover las subastas ya"*.
     """)
 
 # ========== CONCLUSIONES ==========
-elif reto == "📝 Conclusiones":
-    st.title("📝 Conclusiones")
+elif reto == "Conclusiones":
+    st.title("Conclusiones")
 
-    st.subheader("Síntesis del framework aplicado")
+    st.subheader("Sintesis del framework aplicado")
 
     tabla = pd.DataFrame({
-        'Eje': ['Eficiencia (pre-atentivo)', 'Sintaxis (Gestalt)', 'Síntesis de datos', 'Acto de habla'],
-        'Reto 1': ['Color (hue)', 'Similitud + continuidad', 'Comparación', 'Informar'],
-        'Reto 2': ['Grosor + color', 'Figura/fondo', 'Correlación temporal', 'Convencer'],
-        'Reto 3': ['Color + posición', 'Proximidad + figura/fondo', 'Correlación + proyección', 'Motivar']
+        'Eje': ['Eficiencia (pre-atentivo)', 'Sintaxis (Gestalt)', 'Sintesis de datos', 'Acto de habla'],
+        'Reto 1': ['Color (hue)', 'Similitud + continuidad', 'Comparacion', 'Informar'],
+        'Reto 2': ['Grosor + color', 'Figura/fondo', 'Correlacion temporal', 'Convencer'],
+        'Reto 3': ['Color + posicion', 'Proximidad + figura/fondo', 'Correlacion + proyeccion', 'Motivar']
     })
     st.dataframe(tabla, use_container_width=True, hide_index=True)
 
     st.subheader("Limitaciones")
     st.markdown("""
-    - La proyección lineal de Chile asume continuidad de la tasa 2018-{ultimo}; en la realidad podría desacelerar.
-    - "Renewables share" no distingue entre hidroeléctrica (legado de Colombia) y nueva capacidad solar/eólica.
-    - Sería ideal complementar con datos de capacidad instalada y subastas adjudicadas (CREG / UPME).
+    - La proyeccion lineal de Chile asume continuidad de la tasa 2018-{ultimo}; en la realidad podria desacelerar.
+    - "Renewables share" no distingue entre hidroelectrica (legado de Colombia) y nueva capacidad solar/eolica.
+    - Seria ideal complementar con datos de capacidad instalada y subastas adjudicadas (CREG / UPME).
     """.replace("{ultimo}", str(ultimo)))
 
-    st.subheader("Reflexión metodológica")
+    st.subheader("Reflexion metodologica")
     st.info("""
-    El mismo dataset puede **informar, convencer o motivar** dependiendo del diseño.
-    La decisión sobre qué atributos pre-atentivos activar es, en última instancia,
-    una decisión retórica — no estética. El analista no "muestra datos",
+    El mismo dataset puede **informar, convencer o motivar** dependiendo del diseno.
+    La decision sobre que atributos pre-atentivos activar es, en ultima instancia,
+    una decision retorica - no estetica. El analista no "muestra datos",
     **construye argumentos visuales**.
     """)
