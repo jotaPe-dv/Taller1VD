@@ -37,8 +37,8 @@ st.sidebar.markdown("---")
 
 reto = st.sidebar.radio(
     "Navegación",
-    ["🏠 Portada", "📏 Reto 1: Jerarquía", "⚖️ Reto 2: Contraste",
-     "🎭 Reto 3: Persuasión", "📝 Conclusiones"]
+    ["Portada","Reto #1", "Reto #2",
+     "Reto #3", "Conclusiones"]
 )
 
 st.sidebar.markdown("---")
@@ -46,7 +46,7 @@ st.sidebar.caption(f"Dataset: Our World in Data\nÚltimo año: {ultimo}")
 
 # ========== PORTADA ==========
 if reto == "🏠 Portada":
-    st.title("Laboratorio de Comunicación Basada en Evidencia")
+    st.title("Laboratorio de Comunicacion Basada en Evidencia")
     st.subheader("Evaluación 1 — Arquitecto de Decisiones")
 
     st.markdown("""
@@ -72,7 +72,7 @@ if reto == "🏠 Portada":
 # ========== RETO 1 ==========
 elif reto == "📏 Reto 1: Jerarquía":
     st.title("📏 Reto 1: Jerarquía")
-    st.caption("Ponderación: 33% · Eje: Eficiencia (atributos pre-atentivos)")
+    st.caption("Eje: Eficiencia (atributos pre-atentivos)")
 
     # Top 8 + Colombia
     ranking = df[df['year'] == ultimo].sort_values('renewables_share_elec', ascending=False).reset_index(drop=True)
@@ -134,7 +134,7 @@ elif reto == "📏 Reto 1: Jerarquía":
 # ========== RETO 2 ==========
 elif reto == "⚖️ Reto 2: Contraste":
     st.title("⚖️ Reto 2: Contraste")
-    st.caption("Ponderación: 33% · Eje: Sintaxis (Gestalt figura/fondo)")
+    st.caption("Eje: Sintaxis (Gestalt figura/fondo)")
 
     peers = ['Colombia', 'Brazil', 'Chile', 'Argentina', 'Mexico']
     sub = df[df['country'].isin(peers) & (df['year'] >= 1995)].copy()
@@ -209,7 +209,7 @@ elif reto == "⚖️ Reto 2: Contraste":
 # ========== RETO 3 ==========
 elif reto == "🎭 Reto 3: Persuasión":
     st.title("🎭 Reto 3: Persuasión")
-    st.caption("Ponderación: 34% · Eje: Acto de habla (storytelling ejecutivo)")
+    st.caption("Eje: Acto de habla (storytelling ejecutivo)")
 
     sub = df[df['country'].isin(['Colombia', 'Chile']) & (df['year'] >= 2000)].copy()
 
