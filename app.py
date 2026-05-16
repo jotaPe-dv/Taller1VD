@@ -226,7 +226,7 @@ elif reto == "Reto 3: Persuasion":
         d = sub[sub['country'] == pais]
         ax.plot(d['year'], d['renewables_share_elec'], color=color, linewidth=ancho, zorder=3)
 
-    ax.plot(años_proy, proy, color=NARANJA, linewidth=1.5, linestyle='--', alpha=0.7, zorder=2)
+    ax.plot(anos_proy, proy, color=NARANJA, linewidth=1.5, linestyle='--', alpha=0.7, zorder=2)
 
     col_ult = sub[(sub['country'] == 'Colombia') & (sub['year'] == ultimo)]['renewables_share_elec'].values[0]
     ax.axhline(col_ult, color=VERDE, linestyle=':', alpha=0.4, zorder=1)
